@@ -19,5 +19,21 @@ export default {
     }
     Wresize(320,736)()
   }(),
+}
 
+export const uploadImgCommon = {
+  methods:{
+    upload:function (img) {
+      let that = this
+      let reader = new FileReader();
+      if((img.type).indexOf("image") === -1){
+        alert("请上传图片!");
+        return false;
+      }
+      reader.readAsDataURL(img)
+      reader.onload = function (e) {
+        document.getElementById("imgReview").style.background=`url(${e.target.result}) no-repeat left 0 top 0/100%`;
+      }
+    }
+  }
 }

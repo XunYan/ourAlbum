@@ -1,10 +1,10 @@
 <template>
   <div>
     <ul class="album_container" v-if="album_list.length !== 0">
-      <li v-for="val in album_list"><img src="../assets/floder.jpg" alt="">{{val.name}}</li>
+      <li v-for="val in album_list" @click="changePage('/album_detail')"><img src="../assets/floder.jpg" alt="">{{val.name}}</li>
     </ul>
     <div class="create_album" v-else="" >
-      <el-button type="primary" @click="changePage">创建相册</el-button>
+      <el-button type="primary" @click="changePage('/album_createAndEdit')">创建相册</el-button>
     </div>
   </div>
 </template>
@@ -15,9 +15,6 @@
         data() {
           return {
             album_list:[
-              /*{
-                name:"123"
-              },
               {
                 name:"123"
               },
@@ -29,13 +26,16 @@
               },
               {
                 name:"123"
-              },*/
+              },
+              {
+                name:"123"
+              },
             ]
           }
         },
         methods:{
-          changePage:function () {
-            router.push("/album_createAndEdit")
+          changePage:function (e) {
+            router.push(e)
           }
         }
     }
