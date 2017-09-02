@@ -15,8 +15,10 @@
     </div>
     <div>
       <span>选择分组</span>
-
       <el-button type="primary">创建分组</el-button>
+    </div>
+    <div class="save">
+      <el-button type="primary" @click="submit">保存</el-button>
     </div>
   </div>
 </template>
@@ -28,6 +30,11 @@
             album_date:"",
             album_name:""
           }
+        },
+        methods:{
+          submit:function () {
+
+          }
         }
     }
 </script>
@@ -38,5 +45,9 @@
   }
   .input_options{
     margin-bottom: 0.5rem;
+  }
+  .save{
+    text-align: center;
+    margin-top: 1rem;
   }
 </style>

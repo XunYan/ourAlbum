@@ -27,8 +27,8 @@
     flex-flow: nowrap;
     justify-content: space-around;
     background-color: #20A0FF;
-    height: 3rem;
-    line-height: 3rem;
+    height: 4rem;
+    line-height: 4rem;
   }
   .nav li{
     color: #ffffff;
