@@ -3,16 +3,19 @@
     <ul class="album_container" v-if="album_list.length !== 0">
       <li v-for="val in album_list"><img src="../assets/floder.jpg" alt="">{{val.name}}</li>
     </ul>
-    <div class="create_album" v-else="">创建相册</div>
+    <div class="create_album" v-else="" >
+      <el-button type="primary" @click="changePage">创建相册</el-button>
+    </div>
   </div>
 </template>
 
 <script>
+  import router from '../router'
     export default {
         data() {
           return {
             album_list:[
-              {
+              /*{
                 name:"123"
               },
               {
@@ -26,8 +29,13 @@
               },
               {
                 name:"123"
-              },
+              },*/
             ]
+          }
+        },
+        methods:{
+          changePage:function () {
+            router.push("/album_createAndEdit")
           }
         }
     }
@@ -50,5 +58,9 @@
   .album_container li img{
     width: 10rem;
     height: 8rem;
+  }
+  .create_album{
+    margin: 3rem  auto 0;
+    text-align: center;
   }
 </style>
