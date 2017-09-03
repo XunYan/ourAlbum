@@ -3,7 +3,7 @@
     <ul class="album_container" v-if="album_list.length !== 0">
       <li v-for="val in album_list" @click="changePage('/album_detail')"><img src="../assets/floder.jpg" alt="">{{val.name}}</li>
     </ul>
-    <div class="create_album" v-else="" >
+    <div class="create_album">
       <el-button type="primary" @click="changePage('/album_createAndEdit')">创建相册</el-button>
     </div>
   </div>
