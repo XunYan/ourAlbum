@@ -1,6 +1,6 @@
 <template>
   <div class="dateInput">
-    <input type="text" placeholder="请选择日期" class="date" v-on:focus="show">
+    <input type="text" placeholder="请选择日期" class="date" v-on:focus="show" :value="dateOutput">
     <div class="dateCon" v-show="dateShow">
       <div class="choseMonth clearfix">
         <div class="" @click="reduce"><</div>
@@ -39,7 +39,9 @@
         curYear:"",
         curMonth:"",
         curMonthCN:"",
-        dateShow:false
+        dateShow:false,
+        curChoose:{},
+        dateOutput:""
       }
     },
     computed:{
@@ -111,15 +113,20 @@
       },
       choseDay:function(val){
         if(val.canBeChose){
-          val.chosen = !val.chosen;
-          if(this.choseDate.indexOf(val.fullDate+val.weekCN) === -1){
-            this.choseDate.push(val.fullDate+val.weekCN);
-          }else {
-            this.choseDate.splice(this.choseDate.indexOf(val.fullDate+val.weekCN),1);
-            console.log(this.choseDate.indexOf(val.fullDate))
-          }
-          console.log(this.myDate);
-          this.setData();
+          val.chosen = true;
+          this.curChoose.chosen = false;
+          this.curChoose = val;
+          this.dateShow = false;
+          this.dateOutput = val.fullDate;
+          //val.chosen = !val.chosen;
+          /* if(this.choseDate.indexOf(val.fullDate+val.weekCN) === -1){
+             this.choseDate.push(val.fullDate+val.weekCN);
+           }else {
+             this.choseDate.splice(this.choseDate.indexOf(val.fullDate+val.weekCN),1);
+             console.log(this.choseDate.indexOf(val.fullDate))
+           }
+           console.log(this.myDate);*/
+          //this.setData();//存入session
         }
       },
       submitDay:function(val){
@@ -241,20 +248,20 @@
   .date{-webkit-appearance: none;  -moz-appearance: none;  appearance: none;  background-color: #fff;  background-image: none;  border-radius: 4px;  border: 1px solid #bfcbd9;  box-sizing: border-box;  color: #1f2d3d;  font-size: inherit;  height: 36px; width: 16rem; line-height: 1;  outline: 0;  padding: 3px 10px;  transition: border-color .2s cubic-bezier(.645,.045,.355,1);}
   .date:focus{border-color: #1c8de0}
   .dateInput{display: inline-block;position: relative;z-index: 100}
-  .dateCon{  width:25rem;  margin:0 auto;  position: absolute;left: -25%;top:100%;background-color: #ffffff;}
+  .dateCon{ padding-bottom: 1rem; width:25rem;  margin:0 auto;  position: absolute;left: -25%;top:110%;background-color: #ffffff;box-shadow: 0 0 5px #aaaaaa;border-radius: 5px;transform-origin: center top 0px;}
   ul{padding:0}
   li{list-style: none;box-sizing: border-box;}
   .dateTitle{width: 21rem;margin: 0 auto;font-size: 1rem;color:#20A0FF;position: relative}
-  .dateTitle>li{float: left;width: 3rem;height:2rem;line-height:2rem;text-align: center;  font-family: Microsoft YaHei,Arial,PingFang SC,Hiragino Sans GB,STHeiti,Helvetica Neue,WenQuanYi Micro Hei,sans-serif;}
+  .dateTitle>li{float: left;width: 3rem;height:2.5rem;line-height:2.5rem;text-align: center;  font-family: Microsoft YaHei,Arial,PingFang SC,Hiragino Sans GB,STHeiti,Helvetica Neue,WenQuanYi Micro Hei,sans-serif;}
   .dateApp{width: 21rem;margin: 0 auto;
     height:calc(100% - 0.520rem);
   }
-  .dateApp>li{font-size: 1rem;float: left;margin:0.1rem 0;width: 3rem;height:2rem;line-height:2rem;text-align: center;overflow: hidden}
+  .dateApp>li{font-size: 1rem;float: left;margin:0.1rem 0;width: 3rem;height:2.5rem;line-height:2.5rem;text-align: center;overflow: hidden}
   .gray{color: #bbbbbb}
   .chosen{background-color: #20A0FF;border-radius: 5%;color: #ffffff;cursor: pointer}
   .tomorrow{border-radius: 50%;border: 1px solid #597453}
   .darkGreen{color: #20A0FF;cursor: pointer}
-  .choseMonth{text-align: center;color:#20A0FF; display: flex;justify-content: space-between}
+  .choseMonth{text-align: center;color:#20A0FF; display: flex;justify-content: space-between;margin-top: 1rem}
   .choseMonth>div{display: inline-block;cursor: pointer}
   /*@media screen and (max-width: 1280px) {
     .dateApp>li{
