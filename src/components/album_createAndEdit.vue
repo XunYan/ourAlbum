@@ -6,12 +6,14 @@
     </div>
     <div class="block input_options">
       <span class="demonstration">选择日期</span>
-      <el-date-picker
+      <choseDate></choseDate>
+      <!--<calendar></calendar>-->
+      <!--<el-date-picker
         v-model="album_date"
         type="date"
         placeholder="选择日期"
       >
-      </el-date-picker>
+      </el-date-picker>-->
     </div>
     <div>
       <span>选择分组</span>
@@ -24,6 +26,8 @@
 </template>
 
 <script>
+    //import calendar from './_calendar.vue'
+    import choseDate from './choseDate.vue'
     export default {
         data() {
           return{
@@ -35,6 +39,9 @@
           submit:function () {
 
           }
+        },
+        components:{
+          choseDate
         }
     }
 </script>
