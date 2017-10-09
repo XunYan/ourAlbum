@@ -33,6 +33,9 @@
         }
       },
       mounted(){
+        [...document.querySelectorAll(".el-icon-plus")].map( (e)=>{
+          console.log(1);
+        });
         let that = this;
         let dom = document.getElementById("imgUpload");
         dom.addEventListener("change",function () {
